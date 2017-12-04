@@ -11,6 +11,7 @@
         th {font-family: 'Open Sans', sans-serif; font-weight:600 !important;}
         td {font-family: 'Roboto', sans-serif;}
         p ,li {line-height:24px;}
+        .contact {display:inline-block;padding-right:5px;}
 
     </style>
 </head>
@@ -30,7 +31,7 @@
                 <h4>DATA</h4>
                 <p>
                     The Buzzfeed-Webis Fake News Corpus 2016 (Silverman, Strapagiel, Shaban, Hall, Singer-Vine, 2016) contains 1,627 news articles that were manually fact-checked by labelled as follows.
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
                             <th>Label</th>
                             <th>Percentage</th>
@@ -54,19 +55,49 @@
                             </tr>
                         </tbody>
                     </table>
-                    The data is from 9 publishers. 3 left-wing, 3 right-wing and 3 main stream. The original data contained the main body of text, author information, orientation, number of links and quotes in the text.  We generated features from this content examples of which are:
+                    <!--The data is from 9 publishers. 3 left-wing, 3 right-wing and 3 main stream. The original data contained the main body of text, author information, orientation, number of links and quotes in the text.  We generated features from this content examples of which are:-->
+                </p>
+                <h4>MODEL</h4>
+                <p>
+                    Hierarchical CNN (three convolutional and max pooling layers, the first two of which are followed by dropout layers). Grid search was used to select the best performing configuration of hyperparameters for the CNN.<br>
+                    The logistic regression model
                 </p>
             </div>
             <div class="col-md-4">
-                <h4>MODEL</h4>
+                <h4>EVALUATION</h4>
                 <p>
-                    Manually designed text features and black box vs feature engineering<br>
-                    -Hierarchical CNN (If we can make/find an image, it could show the three convolutional and max pooling layers, the first two of which are followed by dropout layers).<br>
-                    -Mention the hierarchical CNN was cross-validated using grid search.<br>
+                    <!-- -Probably run some ablation tests on the logistic regression output and highlight a couple of features worth mentioning. [Good idea]-->
+                    <!-- -To evaluate the CNN, 20% of the data were held out for testing and the remaining data was split 80/20 for training and validation, respectively.-->
                 </p>
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Model</th>
+                        <th>Accuracy</th>
+                        <th>Avg. Precision</th>
+                        <th>Avg. Recall</th>
+                        <th>Avg. F1</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> CNN </td>
+                            <td>81%</td>
+                            <td>.66</td>
+                            <td>.81</td>
+                            <td>.73</td>
+                        </tr>
+                        <tr>
+                            <td>Logistic Regression</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <br>
                 <i>Fake model</i>
                 <img src="https://explosion.ai/blog/img/deep-learning-formula-nlp_example2.svg">
+                <!--<img src="http://alvaliu.com/assets/images/CNN-architecture.png"/>-->
 
             </div>
             <div class="col-md-4">
@@ -96,8 +127,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h4>CONTACT</h4>
-                <span>Tim Burke <a>timothy.burke@berkeley.edu</a>, </span> Eve Mwangi <a>evelyn_mwangi@berkeley.edu</a></span>
+                <h4 class="contact">CONTACT:</h4>
+                <span>Tim Burke <a>timothy.burke@berkeley.edu</a>,&nbsp;</span> Eve Mwangi <a>evelyn_mwangi@berkeley.edu</a></span>
             </div>
         </div>
     </div>
