@@ -6,11 +6,12 @@
         body {font-family: 'Roboto', sans-serif;padding:20px; background-image:url('https://st.depositphotos.com/1032463/1373/i/950/depositphotos_13732950-stock-photo-background-of-old-vintage-newspapers.jpg')}
         .container{ width: 95%; background-color:#fff; padding:15px;}
         h1, h4 {font-family: 'Open Sans', sans-serif; color:brown;text-transform:uppercase;}
-        h1 {padding-bottom:10px;text-align:center;font-weight:500;}
+        h1 {padding-bottom:20px;text-align:center;font-weight:500;}
+        h4 {color:#fff; background-color:brown;padding:5px 10px}
         table {font-family: 'Roboto', sans-serif !important;}
         th {font-family: 'Open Sans', sans-serif; font-weight:600 !important;}
         td {font-family: 'Roboto', sans-serif;}
-        p ,li {line-height:24px;}
+        p ,li {line-height:28px;}
         .contact {display:inline-block;padding-right:5px;}
 
     </style>
@@ -26,7 +27,10 @@
         <div class="row">
             <div class="col-md-4">
                 <h4>SYNOPSIS</h4>
-                <p>Fake news is a hot topic in today’s society. Allcott and Gentkow found that the average voter had been exposed to at least one fake story in the months before the US 2016 election, and that about half had believed the deceptive news. Substantial progress has been made in this direction using a variety of approaches, but a lack of quality training data has limited research on text-based fake news detection. In this paper, we analyze text-based features for fake news detection using one of the largest and most comprehensive fake news datasets available: The Buzzfeed-Webis Fake News Corpus 2016. We will apply a logistic regression model on the text and metadata related to each article to test which features are useful for fake news detection. Additionally, we pre-trained a CNN fake news detector using the Google News word embeddings, and compared results with our logistic regression output.</p>
+                <p>Fake news is a hot topic in today’s society. The average voter had been exposed to at least one fake story in the months before the US 2016 election, and that about half had believed the deceptive news.
+                    Substantial progress has been made in this direction using a variety of approaches, but a lack of quality training data has limited research on text-based fake news detection.
+                    <br>
+                    In this paper, we analyze text-based features for fake news detection using one of the largest and most comprehensive fake news datasets available: The Buzzfeed-Webis Fake News Corpus 2016. We will apply a logistic regression model on the text and metadata related to each article to test which features are useful for fake news detection. Additionally, we pre-trained a CNN fake news detector using the Google News word embeddings, and compared results with our logistic regression output.</p>
                 <br>
                 <h4>DATA</h4>
                 <p>
@@ -39,36 +43,37 @@
                         <tbody>
                             <tr>
                                 <td> Mostly true</td>
-                                <td>77.6%</td>
+                                <td class="text-center">77.6%</td>
                             </tr>
                             <tr>
                                 <td>Mixture of true and false</td>
-                                <td>13.0%</td>
+                                <td class="text-center">13.0%</td>
                             </tr>
                             <tr>
                                 <td>Mostly False</td>
-                                <td>5.3%</td>
+                                <td class="text-center">5.3%</td>
                             </tr>
                             <tr>
                                 <td>No factual content</td>
-                                <td>3.9%</td>
+                                <td class="text-center">3.9%</td>
                             </tr>
                         </tbody>
                     </table>
                     <!--The data is from 9 publishers. 3 left-wing, 3 right-wing and 3 main stream. The original data contained the main body of text, author information, orientation, number of links and quotes in the text.  We generated features from this content examples of which are:-->
                 </p>
-                <h4>MODEL</h4>
+                <h4>MODELS</h4>
                 <p>
-                    Hierarchical CNN (three convolutional and max pooling layers, the first two of which are followed by dropout layers). Grid search was used to select the best performing configuration of hyperparameters for the CNN.<br>
-                    The logistic regression model
+                    1. Hierarchical CNN (three convolutional and max pooling layers, the first two of which are followed by dropout layers). Grid search was used to select the best performing configuration of hyperparameters for the CNN.<br>
+                    2. For the logistic regression model we used two representations of the data; TF-IDF and word embeddings. StratifiedKFold search was also used to select the regularization strength.
                 </p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="CNN.png"/>
+                 </div>
+            </div>
+            <div class="col-md-5">
                 <h4>EVALUATION</h4>
-                <p>
-                    <!-- -Probably run some ablation tests on the logistic regression output and highlight a couple of features worth mentioning. [Good idea]-->
-                    <!-- -To evaluate the CNN, 20% of the data were held out for testing and the remaining data was split 80/20 for training and validation, respectively.-->
-                </p>
                 <table class="table table-bordered">
                     <thead>
                         <th>Model</th>
@@ -80,29 +85,28 @@
                     <tbody>
                         <tr>
                             <td> CNN </td>
-                            <td>81%</td>
-                            <td>.66</td>
-                            <td>.81</td>
-                            <td>.73</td>
+                            <td class="text-center">81%</td>
+                            <td class="text-center">.66</td>
+                            <td class="text-center">.81</td>
+                            <td class="text-center">.73</td>
                         </tr>
                         <tr>
-                            <td>Logistic Regression</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>Logistic Regression(embeddings)</td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                        </tr>
+                        <tr>
+                            <td>Logistic Regression(TF-IDF)</td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
+                            <td class="text-center"></td>
                         </tr>
                     </tbody>
                 </table>
                 <br>
-                <!--<i>Fake model</i>-->
-                <!--<img src="https://explosion.ai/blog/img/deep-learning-formula-nlp_example2.svg">-->
-                <!--<img src="http://alvaliu.com/assets/images/CNN-architecture.png"/>-->
-                <div class="text-center">
-                    <img src="CNN.png"/>
-                 </div>
-            </div>
-            <div class="col-md-4">
                 <h4>ANALYSIS</h4>
                 <p>
                     <b>Are deception detection textual traits still useful in prediction Fake News?</b>
